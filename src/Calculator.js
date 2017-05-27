@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CalculatorScreen from './CalculatorScreen';
 import Button from './Button';
+import { clickNumber, clickClear } from './actions';
 import './Calculator.css';
 
 class Calculator extends Component {
@@ -8,9 +9,10 @@ class Calculator extends Component {
     super();
 
     this.handleNumberClick = this.handleNumberClick.bind(this);
+    this.handleClearClick = this.handleClearClick.bind(this);
 
     this.state = {
-      buffer: 0
+      buffer: '0'
     }
   }
 
@@ -19,7 +21,7 @@ class Calculator extends Component {
       <div className="Calculator">
         <div className="Calculator-container">
           <CalculatorScreen value={this.state.buffer} />
-          <Button value="AC" onClick={this.handleNumberClick} />
+          <Button value="AC" onClick={this.handleClearClick} />
           <Button value="CE" onClick={this.handleNumberClick} />
           <Button value="%" onClick={this.handleNumberClick} />
           <Button value="/" onClick={this.handleNumberClick} />
@@ -48,9 +50,11 @@ class Calculator extends Component {
   }
 
   handleNumberClick(number) {
-    this.setState((prevState) => ({
-      buffer: prevState.buffer + number
-    }))
+    this.setState(clickNumber.bind(null, number))
+  }
+
+  handleClearClick(key) {
+    this.setState(clickClear.bind(null, key))
   }
 }
 
