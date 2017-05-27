@@ -1,0 +1,17 @@
+.Button {
+  background-color: #E8E8E8;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 10px 0;
+}
+
+.Button:nth-child(even) {
+  background-color: #D3D3D3;
+  color: #000;
+}
+
+.Button-big {
+  grid-row-end: span 2;
+}
