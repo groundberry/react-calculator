@@ -1,4 +1,4 @@
-import { clickNumber, clickAllClear } from './actions';
+import { clickNumber, clickAllClear, clickClearEntry } from './actions';
 
 describe('actions', () => {
   describe('clickNumber', () => {
@@ -18,14 +18,34 @@ describe('actions', () => {
   describe('clickAllClear', () => {
     it('clears everything', () => {
       const prevState = {
-        entry: '1',
+        entry: '45',
+        memory: '123',
+        operation: '+',
+      };
+
+      const newState = {
+        entry: '0',
+        memory: '0',
+        operation: null,
+      };
+
+      expect(clickAllClear(prevState)).toEqual(newState);
+    });
+  });
+
+  describe('clickClearEntry', () => {
+    it('clears entry', () => {
+      const prevState = {
+        entry: '45',
+        memory: '123',
+        operation: '+',
       };
 
       const newState = {
         entry: '0',
       };
 
-      expect(clickAllClear(prevState)).toEqual(newState);
+      expect(clickClearEntry(prevState)).toEqual(newState);
     });
   });
 });

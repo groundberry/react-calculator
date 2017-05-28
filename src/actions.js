@@ -9,5 +9,13 @@ export function clickNumber(number, prevState) {
 export function clickAllClear() {
   return {
     entry: '0',
+    memory: '0',
+    operation: null,
+  };
+}
+
+export function clickClearEntry() {
+  return {
+    entry: '0',
   };
 }

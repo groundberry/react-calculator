@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CalculatorScreen from './CalculatorScreen';
 import Button from './Button';
-import { clickNumber, clickAllClear } from './actions';
+import { clickNumber, clickAllClear, clickClearEntry } from './actions';
 import './Calculator.css';
 
 class Calculator extends Component {
@@ -9,7 +9,8 @@ class Calculator extends Component {
     super();
 
     this.handleNumberClick = this.handleNumberClick.bind(this);
-    this.handleClearClick = this.handleClearClick.bind(this);
+    this.handleClickAllClear = this.handleClickAllClear.bind(this);
+    this.handleClickClearEntry = this.handleClickClearEntry.bind(this);
 
     this.state = {
       entry: '0',
@@ -20,8 +21,12 @@ class Calculator extends Component {
     this.setState(clickNumber.bind(null, number));
   }
 
-  handleClearClick(key) {
+  handleClickAllClear(key) {
     this.setState(clickAllClear.bind(null, key));
+  }
+
+  handleClickClearEntry(key) {
+    this.setState(clickClearEntry.bind(null, key));
   }
 
   render() {
@@ -29,8 +34,8 @@ class Calculator extends Component {
       <div className="Calculator">
         <div className="Calculator-container">
           <CalculatorScreen value={this.state.entry} />
-          <Button value="AC" onClick={this.handleClearClick} />
-          <Button value="CE" onClick={this.handleNumberClick} />
+          <Button value="AC" onClick={this.handleClickAllClear} />
+          <Button value="CE" onClick={this.handleClickClearEntry} />
           <Button value="%" onClick={this.handleNumberClick} />
           <Button value="/" onClick={this.handleNumberClick} />
           <Button value="7" onClick={this.handleNumberClick} />
