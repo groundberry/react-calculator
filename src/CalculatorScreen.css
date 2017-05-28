@@ -1,14 +1,14 @@
 .CalculatorScreen {
-  background-color: #E8E8E8;
-  border-color: #D3D3D3;
+  background-color: #e8e8e8;
+  border-color: #d3d3d3;
+  border-radius: 5px;
   border-style: solid;
   border-width: thin;
-  border-radius: 5px;
   color: #000;
   font-size: 25px;
-  padding: 10px 0;
+  grid-column-end: span 4;
   margin: 50px 0 10px;
-  grid-column: 1 / 5;
-  grid-row: 1 / 2;
+  padding: 10px;
+  text-align: right;
   z-index: 10;
 }

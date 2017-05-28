@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Button.css';
 
 class Button extends Component {
@@ -8,17 +9,29 @@ class Button extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  render() {
-    return(
-      <button className={`Button ${this.props.className}`} onClick={this.handleClick}>
-        {this.props.value}
-      </button>
-    )
-  }
-
   handleClick() {
     this.props.onClick(this.props.value);
   }
+
+  render() {
+    return (
+      <button className={`Button ${this.props.className}`} onClick={this.handleClick}>
+        {this.props.value}
+      </button>
+    );
+  }
 }
+
+Button.defaultProps = {
+  className: '',
+  value: '',
+  onClick: null,
+};
+
+Button.propTypes = {
+  className: PropTypes.string,
+  value: PropTypes.string,
+  onClick: PropTypes.func,
+};
 
 export default Button;

@@ -12,12 +12,20 @@ class Calculator extends Component {
     this.handleClearClick = this.handleClearClick.bind(this);
 
     this.state = {
-      buffer: '0'
-    }
+      buffer: '0',
+    };
+  }
+
+  handleNumberClick(number) {
+    this.setState(clickNumber.bind(null, number));
+  }
+
+  handleClearClick(key) {
+    this.setState(clickClear.bind(null, key));
   }
 
   render() {
-    return(
+    return (
       <div className="Calculator">
         <div className="Calculator-container">
           <CalculatorScreen value={this.state.buffer} />
@@ -37,24 +45,16 @@ class Calculator extends Component {
           <Button value="2" onClick={this.handleNumberClick} />
           <Button value="3" onClick={this.handleNumberClick} />
           <Button
+            className="Button-big"
             value="+"
             onClick={this.handleNumberClick}
-            className='Button-big'
           />
           <Button value="0" onClick={this.handleNumberClick} />
           <Button value="." onClick={this.handleNumberClick} />
           <Button value="=" onClick={this.handleNumberClick} />
         </div>
       </div>
-    )
-  }
-
-  handleNumberClick(number) {
-    this.setState(clickNumber.bind(null, number))
-  }
-
-  handleClearClick(key) {
-    this.setState(clickClear.bind(null, key))
+    );
   }
 }
 

@@ -1,13 +1,13 @@
 export function clickNumber(number, prevState) {
-  const newBuffer = '' + parseInt(prevState.buffer + number, 10);
+  const newBuffer = String(parseInt(prevState.buffer + number, 10));
 
   return {
-    buffer: newBuffer
-  }
+    buffer: newBuffer,
+  };
 }
 
-export function clickClear(key, prevState) {
+export function clickClear() {
   return {
-    buffer: '0'
-  }
+    buffer: '0',
+  };
 }
