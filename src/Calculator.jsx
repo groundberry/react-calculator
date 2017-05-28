@@ -12,7 +12,7 @@ class Calculator extends Component {
     this.handleClearClick = this.handleClearClick.bind(this);
 
     this.state = {
-      buffer: '0',
+      entry: '0',
     };
   }
 
@@ -28,7 +28,7 @@ class Calculator extends Component {
     return (
       <div className="Calculator">
         <div className="Calculator-container">
-          <CalculatorScreen value={this.state.buffer} />
+          <CalculatorScreen value={this.state.entry} />
           <Button value="AC" onClick={this.handleClearClick} />
           <Button value="CE" onClick={this.handleNumberClick} />
           <Button value="%" onClick={this.handleNumberClick} />
