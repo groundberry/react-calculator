@@ -6,7 +6,7 @@ export function clickNumber(number, prevState) {
   };
 }
 
-export function clickClear() {
+export function clickAllClear() {
   return {
     buffer: '0',
   };

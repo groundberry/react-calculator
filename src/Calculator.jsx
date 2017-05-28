@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CalculatorScreen from './CalculatorScreen';
 import Button from './Button';
-import { clickNumber, clickClear } from './actions';
+import { clickNumber, clickAllClear } from './actions';
 import './Calculator.css';
 
 class Calculator extends Component {
@@ -21,7 +21,7 @@ class Calculator extends Component {
   }
 
   handleClearClick(key) {
-    this.setState(clickClear.bind(null, key));
+    this.setState(clickAllClear.bind(null, key));
   }
 
   render() {

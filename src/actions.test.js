@@ -1,4 +1,4 @@
-import { clickNumber } from './actions';
+import { clickNumber, clickAllClear } from './actions';
 
 describe('actions', () => {
   describe('clickNumber', () => {
@@ -12,6 +12,20 @@ describe('actions', () => {
       };
 
       expect(clickNumber(1, prevState)).toEqual(newState);
+    });
+  });
+
+  describe('clickAllClear', () => {
+    it('clears everything', () => {
+      const prevState = {
+        buffer: '1',
+      };
+
+      const newState = {
+        buffer: '0',
+      };
+
+      expect(clickAllClear(prevState)).toEqual(newState);
     });
   });
 });
