@@ -21,6 +21,18 @@ describe('actions', () => {
       expect(clickNumber('1', prevState)).toEqual(newState);
     });
 
+    it('adds a decimal number to the screen', () => {
+      const prevState = {
+        entry: '0',
+      };
+
+      const newState = {
+        entry: '0.',
+      };
+
+      expect(clickNumber('.', prevState)).toEqual(newState);
+    });
+
     it('replaces the entry when there was an operation', () => {
       const prevState = {
         entry: '123',

@@ -1,8 +1,14 @@
 export function clickNumber(number, prevState) {
   const { entry, memory, operation } = prevState;
-  const newEntry = operation == null || entry !== memory
-    ? String(parseInt(entry + number, 10))
-    : number;
+  let newEntry;
+
+  if (number === '.') {
+    newEntry = entry + number;
+  } else if (operation == null || entry !== memory) {
+    newEntry = String(parseFloat(entry + number));
+  } else {
+    newEntry = number;
+  }
 
   return {
     entry: newEntry,
@@ -31,7 +37,7 @@ export function clickOperation(operation, prevState) {
 }
 
 export function clickPercentage(prevState) {
-  const result = String(parseInt(prevState.entry, 10) / 100);
+  const result = String(parseFloat(prevState.entry) / 100);
   return {
     entry: result,
     memory: result,
@@ -40,8 +46,8 @@ export function clickPercentage(prevState) {
 }
 
 function calculate(prevState) {
-  const firstNumber = parseInt(prevState.memory, 10);
-  const secondNumber = parseInt(prevState.entry, 10);
+  const firstNumber = parseFloat(prevState.memory);
+  const secondNumber = parseFloat(prevState.entry);
 
   switch (prevState.operation) {
     case '+':
