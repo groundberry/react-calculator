@@ -23,17 +23,10 @@ export function clickClearEntry() {
   };
 }
 
-export function clickSum(prevState) {
+export function clickOperation(operation, prevState) {
   return {
     memory: prevState.entry,
-    operation: '+',
-  };
-}
-
-export function clickSub(prevState) {
-  return {
-    memory: prevState.entry,
-    operation: '-',
+    operation,
   };
 }
 
@@ -41,15 +34,18 @@ function calculate(prevState) {
   const firstNumber = parseInt(prevState.memory, 10);
   const secondNumber = parseInt(prevState.entry, 10);
 
-  if (prevState.operation === '+') {
-    return String(firstNumber + secondNumber);
+  switch (prevState.operation) {
+    case '+':
+      return String(firstNumber + secondNumber);
+    case '-':
+      return String(firstNumber - secondNumber);
+    case 'x':
+      return String(firstNumber * secondNumber);
+    case '/':
+      return String(firstNumber / secondNumber);
+    default:
+      throw new Error('Unsupported operation!');
   }
-
-  if (prevState.operation === '-') {
-    return String(firstNumber - secondNumber);
-  }
-
-  throw new Error('Unsupported operation!');
 }
 
 export function clickEqual(prevState) {

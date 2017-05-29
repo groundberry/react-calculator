@@ -2,8 +2,7 @@ import {
   clickNumber,
   clickAllClear,
   clickClearEntry,
-  clickSum,
-  clickSub,
+  clickOperation,
   clickEqual,
 } from './actions';
 
@@ -84,7 +83,7 @@ describe('actions', () => {
     });
   });
 
-  describe('clickSum', () => {
+  describe('clickOperation', () => {
     it('saves the sum operation', () => {
       const prevState = {
         entry: '123',
@@ -97,11 +96,9 @@ describe('actions', () => {
         operation: '+',
       };
 
-      expect(clickSum(prevState)).toEqual(newState);
+      expect(clickOperation('+', prevState)).toEqual(newState);
     });
-  });
 
-  describe('clickSub', () => {
     it('saves the subtract operation', () => {
       const prevState = {
         entry: '123',
@@ -114,7 +111,37 @@ describe('actions', () => {
         operation: '-',
       };
 
-      expect(clickSub(prevState)).toEqual(newState);
+      expect(clickOperation('-', prevState)).toEqual(newState);
+    });
+
+    it('saves the multiply operation', () => {
+      const prevState = {
+        entry: '123',
+        memory: '0',
+        operation: null,
+      };
+
+      const newState = {
+        memory: '123',
+        operation: '*',
+      };
+
+      expect(clickOperation('*', prevState)).toEqual(newState);
+    });
+
+    it('saves the divide operation', () => {
+      const prevState = {
+        entry: '123',
+        memory: '0',
+        operation: null,
+      };
+
+      const newState = {
+        memory: '123',
+        operation: '/',
+      };
+
+      expect(clickOperation('/', prevState)).toEqual(newState);
     });
   });
 

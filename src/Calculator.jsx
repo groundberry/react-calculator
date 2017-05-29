@@ -5,8 +5,7 @@ import {
   clickNumber,
   clickAllClear,
   clickClearEntry,
-  clickSum,
-  clickSub,
+  clickOperation,
   clickEqual,
 } from './actions';
 import './Calculator.css';
@@ -18,8 +17,7 @@ class Calculator extends Component {
     this.handleClickNumber = this.handleClickNumber.bind(this);
     this.handleClickAllClear = this.handleClickAllClear.bind(this);
     this.handleClickClearEntry = this.handleClickClearEntry.bind(this);
-    this.handleClickSum = this.handleClickSum.bind(this);
-    this.handleClickSub = this.handleClickSub.bind(this);
+    this.handleClickOperation = this.handleClickOperation.bind(this);
     this.handleClickEqual = this.handleClickEqual.bind(this);
 
     this.state = {
@@ -39,12 +37,8 @@ class Calculator extends Component {
     this.setState(clickClearEntry);
   }
 
-  handleClickSum() {
-    this.setState(clickSum);
-  }
-
-  handleClickSub() {
-    this.setState(clickSub);
+  handleClickOperation(operation) {
+    this.setState(clickOperation.bind(null, operation));
   }
 
   handleClickEqual() {
@@ -58,23 +52,23 @@ class Calculator extends Component {
           <CalculatorScreen value={this.state.entry} />
           <Button value="AC" onClick={this.handleClickAllClear} />
           <Button value="CE" onClick={this.handleClickClearEntry} />
-          <Button value="%" onClick={this.handleClickNumber} />
-          <Button value="/" onClick={this.handleClickNumber} />
+          <Button value="%" onClick={this.handleClickOperation} />
+          <Button value="/" onClick={this.handleClickOperation} />
           <Button value="7" onClick={this.handleClickNumber} />
           <Button value="8" onClick={this.handleClickNumber} />
           <Button value="9" onClick={this.handleClickNumber} />
-          <Button value="x" onClick={this.handleClickNumber} />
+          <Button value="x" onClick={this.handleClickOperation} />
           <Button value="4" onClick={this.handleClickNumber} />
           <Button value="5" onClick={this.handleClickNumber} />
           <Button value="6" onClick={this.handleClickNumber} />
-          <Button value="-" onClick={this.handleClickSub} />
+          <Button value="-" onClick={this.handleClickOperation} />
           <Button value="1" onClick={this.handleClickNumber} />
           <Button value="2" onClick={this.handleClickNumber} />
           <Button value="3" onClick={this.handleClickNumber} />
           <Button
             className="Button-big"
             value="+"
-            onClick={this.handleClickSum}
+            onClick={this.handleClickOperation}
           />
           <Button value="0" onClick={this.handleClickNumber} />
           <Button value="." onClick={this.handleClickNumber} />
