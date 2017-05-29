@@ -3,6 +3,7 @@ import {
   clickAllClear,
   clickClearEntry,
   clickSum,
+  clickSub,
   clickEqual,
 } from './actions';
 
@@ -97,6 +98,23 @@ describe('actions', () => {
       };
 
       expect(clickSum(prevState)).toEqual(newState);
+    });
+  });
+
+  describe('clickSub', () => {
+    it('saves the subtract operation', () => {
+      const prevState = {
+        entry: '123',
+        memory: '0',
+        operation: null,
+      };
+
+      const newState = {
+        memory: '123',
+        operation: '-',
+      };
+
+      expect(clickSub(prevState)).toEqual(newState);
     });
   });
 

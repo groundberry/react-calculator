@@ -30,12 +30,23 @@ export function clickSum(prevState) {
   };
 }
 
+export function clickSub(prevState) {
+  return {
+    memory: prevState.entry,
+    operation: '-',
+  };
+}
+
 function calculate(prevState) {
   const firstNumber = parseInt(prevState.memory, 10);
   const secondNumber = parseInt(prevState.entry, 10);
 
   if (prevState.operation === '+') {
     return String(firstNumber + secondNumber);
+  }
+
+  if (prevState.operation === '-') {
+    return String(firstNumber - secondNumber);
   }
 
   throw new Error('Unsupported operation!');
