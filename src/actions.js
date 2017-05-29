@@ -30,6 +30,15 @@ export function clickOperation(operation, prevState) {
   };
 }
 
+export function clickPercentage(prevState) {
+  const result = String(parseInt(prevState.entry, 10) / 100);
+  return {
+    entry: result,
+    memory: result,
+    operation: null,
+  };
+}
+
 function calculate(prevState) {
   const firstNumber = parseInt(prevState.memory, 10);
   const secondNumber = parseInt(prevState.entry, 10);

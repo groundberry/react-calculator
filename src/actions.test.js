@@ -3,6 +3,7 @@ import {
   clickAllClear,
   clickClearEntry,
   clickOperation,
+  clickPercentage,
   clickEqual,
 } from './actions';
 
@@ -142,6 +143,24 @@ describe('actions', () => {
       };
 
       expect(clickOperation('/', prevState)).toEqual(newState);
+    });
+  });
+
+  describe('clickPercentage', () => {
+    it('saves the percentage operation', () => {
+      const prevState = {
+        entry: '100',
+        memory: '0',
+        operation: null,
+      };
+
+      const newState = {
+        entry: '1',
+        memory: '1',
+        operation: null,
+      };
+
+      expect(clickPercentage(prevState)).toEqual(newState);
     });
   });
 

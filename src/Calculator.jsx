@@ -6,6 +6,7 @@ import {
   clickAllClear,
   clickClearEntry,
   clickOperation,
+  clickPercentage,
   clickEqual,
 } from './actions';
 import './Calculator.css';
@@ -18,6 +19,7 @@ class Calculator extends Component {
     this.handleClickAllClear = this.handleClickAllClear.bind(this);
     this.handleClickClearEntry = this.handleClickClearEntry.bind(this);
     this.handleClickOperation = this.handleClickOperation.bind(this);
+    this.handleClickPercentage = this.handleClickPercentage.bind(this);
     this.handleClickEqual = this.handleClickEqual.bind(this);
 
     this.state = {
@@ -41,6 +43,10 @@ class Calculator extends Component {
     this.setState(clickOperation.bind(null, operation));
   }
 
+  handleClickPercentage() {
+    this.setState(clickPercentage);
+  }
+
   handleClickEqual() {
     this.setState(clickEqual);
   }
@@ -52,7 +58,7 @@ class Calculator extends Component {
           <CalculatorScreen value={this.state.entry} />
           <Button value="AC" onClick={this.handleClickAllClear} />
           <Button value="CE" onClick={this.handleClickClearEntry} />
-          <Button value="%" onClick={this.handleClickOperation} />
+          <Button value="%" onClick={this.handleClickPercentage} />
           <Button value="/" onClick={this.handleClickOperation} />
           <Button value="7" onClick={this.handleClickNumber} />
           <Button value="8" onClick={this.handleClickNumber} />
