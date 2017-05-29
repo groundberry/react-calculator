@@ -22,12 +22,12 @@ class Calculator extends Component {
     this.setState(clickNumber.bind(null, number));
   }
 
-  handleClickAllClear(key) {
-    this.setState(clickAllClear.bind(null, key));
+  handleClickAllClear() {
+    this.setState(clickAllClear);
   }
 
-  handleClickClearEntry(key) {
-    this.setState(clickClearEntry.bind(null, key));
+  handleClickClearEntry() {
+    this.setState(clickClearEntry);
   }
 
   handleClickSum() {
