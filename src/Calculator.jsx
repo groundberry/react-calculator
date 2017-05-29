@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CalculatorScreen from './CalculatorScreen';
 import Button from './Button';
-import { clickNumber, clickAllClear, clickClearEntry } from './actions';
+import { clickNumber, clickAllClear, clickClearEntry, clickSum } from './actions';
 import './Calculator.css';
 
 class Calculator extends Component {
@@ -11,6 +11,7 @@ class Calculator extends Component {
     this.handleNumberClick = this.handleNumberClick.bind(this);
     this.handleClickAllClear = this.handleClickAllClear.bind(this);
     this.handleClickClearEntry = this.handleClickClearEntry.bind(this);
+    this.handleClickSum = this.handleClickSum.bind(this);
 
     this.state = {
       entry: '0',
@@ -27,6 +28,10 @@ class Calculator extends Component {
 
   handleClickClearEntry(key) {
     this.setState(clickClearEntry.bind(null, key));
+  }
+
+  handleClickSum() {
+    this.setState(clickSum);
   }
 
   render() {
@@ -52,7 +57,7 @@ class Calculator extends Component {
           <Button
             className="Button-big"
             value="+"
-            onClick={this.handleNumberClick}
+            onClick={this.handleClickSum}
           />
           <Button value="0" onClick={this.handleNumberClick} />
           <Button value="." onClick={this.handleNumberClick} />

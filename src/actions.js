@@ -19,3 +19,10 @@ export function clickClearEntry() {
     entry: '0',
   };
 }
+
+export function clickSum(prevState) {
+  return {
+    memory: prevState.entry,
+    operation: '+',
+  };
+}

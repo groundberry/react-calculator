@@ -1,4 +1,9 @@
-import { clickNumber, clickAllClear, clickClearEntry } from './actions';
+import {
+  clickNumber,
+  clickAllClear,
+  clickClearEntry,
+  clickSum,
+} from './actions';
 
 describe('actions', () => {
   describe('clickNumber', () => {
@@ -46,6 +51,23 @@ describe('actions', () => {
       };
 
       expect(clickClearEntry(prevState)).toEqual(newState);
+    });
+  });
+
+  describe('clickSum', () => {
+    it('saves the sum operation', () => {
+      const prevState = {
+        entry: '123',
+        memory: '0',
+        operation: null,
+      };
+
+      const newState = {
+        memory: '123',
+        operation: '+',
+      };
+
+      expect(clickSum(prevState)).toEqual(newState);
     });
   });
 });
