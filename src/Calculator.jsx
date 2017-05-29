@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import CalculatorScreen from './CalculatorScreen';
 import Button from './Button';
-import { clickNumber, clickAllClear, clickClearEntry, clickSum } from './actions';
+import {
+  clickNumber,
+  clickAllClear,
+  clickClearEntry,
+  clickSum,
+  clickEqual,
+} from './actions';
 import './Calculator.css';
 
 class Calculator extends Component {
@@ -12,6 +18,7 @@ class Calculator extends Component {
     this.handleClickAllClear = this.handleClickAllClear.bind(this);
     this.handleClickClearEntry = this.handleClickClearEntry.bind(this);
     this.handleClickSum = this.handleClickSum.bind(this);
+    this.handleClickEqual = this.handleClickEqual.bind(this);
 
     this.state = {
       entry: '0',
@@ -32,6 +39,10 @@ class Calculator extends Component {
 
   handleClickSum() {
     this.setState(clickSum);
+  }
+
+  handleClickEqual() {
+    this.setState(clickEqual);
   }
 
   render() {
@@ -61,7 +72,7 @@ class Calculator extends Component {
           />
           <Button value="0" onClick={this.handleClickNumber} />
           <Button value="." onClick={this.handleClickNumber} />
-          <Button value="=" onClick={this.handleClickNumber} />
+          <Button value="=" onClick={this.handleClickEqual} />
         </div>
       </div>
     );
